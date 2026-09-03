@@ -52,28 +52,71 @@ Missing information is not fabricated.
 
 The pipeline processes AI model data through a structured sequence of discovery, verification, curation, enrichment, and validation stages.
 
-```mermaid
-flowchart LR
-    A[Model Discovery] --> B[Data Extraction]
-    B --> C[Normalization]
-    C --> D[Entity Resolution]
-    D --> E[Source Verification]
-    E --> F[Identity Verification]
-    F --> G[Quality Scoring]
-    G --> H[Curation]
-    H --> I[Official Enrichment]
-    I --> J[Variant Resolution]
-    J --> K[Canonical Dataset]
-    K --> L[Schema Normalization]
-    L --> M[Targeted Enrichment]
-    M --> N[Field Applicability]
-    N --> O[Evidence Enrichment]
-    O --> P[Description Generation]
-    P --> Q[Final Validation]
-    Q --> R[CSV / JSON Export]
-
-**17. Final Validation**  
-→ Validate records, URLs, descriptions, quality scores, schema, and duplicate IDs
-
-**18. CSV / JSON Export**  
-→ Export the final public dataset in CSV and JSON formats
+                         ┌──────────────────────────────┐
+                         │         Data Sources         │
+                         │ Models.dev • OpenRouter      │
+                         │ Hugging Face • Official Docs │
+                         └──────────────┬───────────────┘
+                                        │
+                                        ▼
+                         ┌──────────────────────────────┐
+                         │      Discovery & Extraction  │
+                         │  model discovery • metadata  │
+                         │      provider information    │
+                         └──────────────┬───────────────┘
+                                        │
+                                        ▼
+                         ┌──────────────────────────────┐
+                         │     Normalization Layer      │
+                         │ standardization • schema     │
+                         │      normalization            │
+                         └──────────────┬───────────────┘
+                                        │
+                                        ▼
+                         ┌──────────────────────────────┐
+                         │   Entity Resolution Layer    │
+                         │ duplicate detection • model  │
+                         │      identity matching        │
+                         └──────────────┬───────────────┘
+                                        │
+                                        ▼
+                         ┌──────────────────────────────┐
+                         │   Verification & Validation  │
+                         │ source verification •        │
+                         │ identity verification        │
+                         └──────────────┬───────────────┘
+                                        │
+                                        ▼
+                         ┌──────────────────────────────┐
+                         │       Quality & Curation     │
+                         │ 100-point scoring • filtering │
+                         │     • candidate selection    │
+                         └──────────────┬───────────────┘
+                                        │
+                                        ▼
+                         ┌──────────────────────────────┐
+                         │      Enrichment Layer        │
+                         │ official metadata • pricing  │
+                         │ license • benchmarks • links │
+                         └──────────────┬───────────────┘
+                                        │
+                                        ▼
+                         ┌──────────────────────────────┐
+                         │   Canonical Dataset Layer    │
+                         │ variant resolution • schema   │
+                         │       normalization          │
+                         └──────────────┬───────────────┘
+                                        │
+                                        ▼
+                         ┌──────────────────────────────┐
+                         │      Final Validation        │
+                         │ duplicates • URLs • fields   │
+                         │ descriptions • quality score │
+                         └──────────────┬───────────────┘
+                                        │
+                                        ▼
+                         ┌──────────────────────────────┐
+                         │      CSV / JSON Export       │
+                         │   models_final.csv           │
+                         │   models_final_public.json   │
+                         └──────────────────────────────┘
