@@ -1,0 +1,31 @@
+# Virtual environment
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment / secrets
+.env
+
+# Runtime / logs
+*.log
+
+# Local raw/intermediate data
+data/raw/
+data/intermediate/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated final artifacts
+data/final/*
+!data/final/
+!data/final/models_final.csv
+!data/final/models_final_public.json
